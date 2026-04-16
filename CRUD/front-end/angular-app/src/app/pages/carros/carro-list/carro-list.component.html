@@ -1,0 +1,45 @@
+<div class="container">
+    <h2>🚗 Lista de Carros</h2>
+
+    <input type="text" placeholder="Buscar por marca, modelo, placa..." [(ngModel)]="filtro" />
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Cor</th>
+                <th>Placa</th>
+                <th>Preço</th>
+                <th>Quilometragem</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let carro of carrosPaginados">
+                <td>{{ carro.id }}</td>
+                <td>{{ carro.marca }}</td>
+                <td>{{ carro.modelo }}</td>
+                <td>{{ carro.ano }}</td>
+                <td>{{ carro.cor }}</td>
+                <td>{{ carro.placa }}</td>
+                <td>R$ {{ carro.preco | number:'1.0-0' }}</td>
+                <td>{{ carro.quilometragem | number }} km</td>
+                <td><button (click)="editar(carro.id)">✏️ Editar</button>
+                 <button (click)="deletar(carro.id)">🗑️ Deletar</button></td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <div class="paginacao">
+        <span class="icon-btn" (click)="paginaAtual = paginaAtual - 1" [class.disabled]="paginaAtual === 1">
+            ⬅️
+        </span>
+        <span>Página {{ paginaAtual }}</span>
+        <span class="icon-btn" (click)="paginaAtual = paginaAtual + 1"
+            [class.disabled]="paginaAtual * itensPorPagina >= carrosFiltrados.length">
+            ➡️
+        </span>
+    </div>
+</div>

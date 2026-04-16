@@ -1,0 +1,43 @@
+<nav class="navbar">
+
+  <button class="menu-btn" (click)="toggleMenu()">
+    ☰ Menu
+  </button>
+
+  <div class="logo">Seja bem-vindo!</div>
+
+</nav>
+
+<div class="menu" *ngIf="menuAberto">
+
+  <!-- CARROS -->
+  <button class="menu-item" (click)="toggleCarros()">
+    🚗 Carros
+  </button>
+
+  <div class="submenu" *ngIf="carrosAberto">
+    <button class="submenu-item" routerLink="/carros">
+      📋 Listar Carros
+    </button>
+
+    <button class="submenu-item" routerLink="/carros/novo">
+      ➕ Novo Carro
+    </button>
+  </div>
+
+  <!-- USUÁRIOS -->
+  <button class="menu-item" (click)="toggleUsuarios()">
+    👤 Usuários
+  </button>
+
+  <div class="submenu" *ngIf="usuariosAberto">
+    <button class="submenu-item">
+      📋 Listar Usuários
+    </button>
+
+    <button class="submenu-item">
+      ➕ Novo Usuário
+    </button>
+  </div>
+
+</div>
